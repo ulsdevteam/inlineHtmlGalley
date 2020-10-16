@@ -1,6 +1,6 @@
 # Inline HTML Galley plugin for PKP
 
-This plugin provides inline display of article galleys for PKP Open Journal Systems, replacing the htmlArticleGalley plugin's use of an iframe to deliver the HTML Galleys.
+This plugin provides inline display of article galleys for PKP Open Journal Systems, replacing the default HTML Article Galley plugin's use of an iframe to deliver the HTML Galleys.  Also consider the [Alternate HTML Galley plugin](https://github.com/ajnyga/embedHtmlArticleGalley).  This plugin will present the galley content within your website's theme.  The Alternate HTML Galley plugin will present the galley in the same manner as the HTML Article Galley plugin (with just a simple header), but without requiring an iframe. 
 
 ## Requirements
 
