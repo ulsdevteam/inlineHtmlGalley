@@ -25,6 +25,13 @@
 		{include file="frontend/components/breadcrumbs_article.tpl" currentTitleKey="article.article"}
 	{/if}
 
+	{* Provide download link *}
+	<div class="inline_html_galley_download">
+		<a class="obj_galley_link file" href="{url page="article" op="download" path=$article->getBestArticleId()|to_array:$galley->getBestGalleyId()}">
+			{translate key="common.download"}
+		</a>
+	</div>
+
 	{* Show article inline *}
 	<div class="inline_html_galley">
 	{$inlineHtmlGalley}

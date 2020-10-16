@@ -21,7 +21,18 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 	 * @see Plugin::register()
 	 */
 	function register($category, $path, $mainContextId = null) {
-		if (!parent::register($category, $path, $mainContextId)) return false;
+		$success = parent::register($category, $path, $mainContextId);
+		if (!$success) return false;
+		if ($success && $this->getEnabled()) {
+			// Load this plugin as a block plugin as well
+			$this->import('InlineHtmlGalleyBlockPlugin');
+			PluginRegistry::register(
+				'blocks',
+				new InlineHtmlGalleyBlockPlugin($this->getName(), $this->getPluginPath()),
+				$this->getPluginPath()
+			);
+		}
+
 		return true;
 	}
 
