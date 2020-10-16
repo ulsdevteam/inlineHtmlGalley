@@ -26,7 +26,9 @@
 	{/if}
 
 	{* Show article inline *}
+	<div class="inline_html_galley">
 	{$inlineHtmlGalley}
+	</div>
 
 	{call_hook name="Templates::Article::Footer::PageFooter"}
 
