@@ -28,7 +28,9 @@ php lib/pkp/tools/installPluginVersion.php plugins/generic/inlineHtmlGalley/vers
 
 Login as a Journal Manger and navigate to the Journal for which you wish to use inline display of HTML Galleys.  Enable the plugin via Login -> Settings -> Website -> Plugins -> Inline HTML Galley -> Enable.
 
-There is no settings configuration for this plugin.  Once enabled, the view of an HTML Galley will extract the HTML `body` from the Galley and will place it inline in the Galley view.  You will need to replicate any CSS or Javascript directives used in the `head` of the Galley in your website configuration.  (Hint: see the Custom Headers plugin.)
+There are no settings to configure for this plugin.  Once enabled, the view of an HTML Galley will extract the HTML `body` from the Galley and will place it inline in the Galley view.  You will need to replicate any CSS or Javascript directives used in the `head` of the Galley in your website configuration.  (Hint: see the Custom Headers plugin.)
+
+The template will provide a link to the "download" handler for the galley above the extracted text of the Galley.  The plugin also provides a sidebar block to link to the download, which may be enabled and positioned via the Website Settings.
 
 ## Author / License
 

@@ -115,7 +115,7 @@ class InlineHtmlGalleyBlockPlugin extends BlockPlugin {
 			if ($router->getRequestedPage($request) === 'article' && $router->getRequestedOp($request) === 'view') {
 				$submission = $templateMgr->getTemplateVars('article');
 				$galley = $templateMgr->getTemplateVars('galley');
-				if ($submission && $galley) {
+				if ($submission && $galley && $galley->getFileType() == 'text/html') {
 					$templateMgr->assign('submissionId', $submission->getBestArticleId());
 					$templateMgr->assign('galleyId', $galley->getBestGalleyId());
 					return parent::getContents($templateMgr);

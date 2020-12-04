@@ -88,6 +88,9 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 	function _extractBodyContents($html) {
 		$bodyContent = '';
 		try {
+			if (!function_exists('libxml_use_internal_errors') || !class_exists('DOMDocument')) {
+				throw new Exception('Missing libxml/dom requirements');
+			}
 			$errorsEnabled = libxml_use_internal_errors();
 			libxml_use_internal_errors(true);
 			$dom = DOMDocument::loadHTML($html);
