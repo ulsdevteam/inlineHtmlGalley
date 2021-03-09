@@ -31,6 +31,7 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 				new InlineHtmlGalleyBlockPlugin($this->getName(), $this->getPluginPath()),
 				$this->getPluginPath()
 			);
+			// HookRegistry::register('ArticleHandler::view', array($this, 'articleViewCallback'), HOOK_SEQUENCE_LATE);
 		}
 
 		return true;
@@ -59,22 +60,25 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 	function articleViewCallback($hookName, $args) {
 		$request =& $args[0];
 		$issue =& $args[1];
-		$galley =& $args[2];
-		$article =& $args[3];
+		$article =& $args[2];
+		$galleys = $article->getGalleys();
+		if (!$galleys) return false;
 
-		if ($galley && $galley->getFileType() == 'text/html') {
-			$templateMgr = TemplateManager::getManager($request);
-			$templateMgr->assign(array(
-				'issue' => $issue,
-				'article' => $article,
-				'galley' => $galley,
-			));
-			$inlineHtmlGalley = $this->_getHTMLContents($request, $galley);
-			$inlineHtmlGalleyBody = $this->_extractBodyContents($inlineHtmlGalley);
-			$templateMgr->assign('inlineHtmlGalley', $inlineHtmlGalleyBody);
-			$templateMgr->display($this->getTemplateResource('displayInline.tpl'));
+		foreach ($galleys as $galley) {
+			if ($galley->getFileType() == 'text/html') {
+				$templateMgr = TemplateManager::getManager($request);
+				$templateMgr->assign(array(
+					'issue' => $issue,
+					'article' => $article,
+					'galley' => $galley,
+				));
+				$inlineHtmlGalley = $this->_getHTMLContents($request, $galley);
+				$inlineHtmlGalleyBody = $this->_extractBodyContents($inlineHtmlGalley);
+				$templateMgr->assign('inlineHtmlGalley', $inlineHtmlGalleyBody);
+				$templateMgr->display($this->getTemplateResource('displayInline.tpl'));
 
-			return true;
+				return true;
+			}
 		}
 
 		return false;
