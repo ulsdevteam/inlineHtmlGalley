@@ -54,7 +54,7 @@ class InlineHtmlGalleyBlockPlugin extends BlockPlugin {
 	 * @return String
 	 */
 	function getDisplayName() {
-		return __('plugins.generic.inlineHtmlGalley.block.displayName');
+		return __('plugins.generic.inlineHtmlGalley.block.download.displayName');
 	}
 
 	/**
@@ -62,7 +62,7 @@ class InlineHtmlGalleyBlockPlugin extends BlockPlugin {
 	 * @return String
 	 */
 	function getDescription() {
-		return __('plugins.generic.inlineHtmlGalley.block.description');
+		return __('plugins.generic.inlineHtmlGalley.block.download.description');
 	}
 
 	/**

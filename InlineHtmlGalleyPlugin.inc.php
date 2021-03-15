@@ -31,7 +31,18 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 				new InlineHtmlGalleyBlockPlugin($this->getName(), $this->getPluginPath()),
 				$this->getPluginPath()
 			);
-			// HookRegistry::register('ArticleHandler::view', array($this, 'articleViewCallback'), HOOK_SEQUENCE_LATE);
+			$this->import('InlineHtmlGalleySidebarBlockPlugin');
+			PluginRegistry::register(
+				'blocks',
+				new InlineHtmlGalleyAuthorsSidebarBlockPlugin($this->getName(), $this->getPluginPath()),
+				$this->getPluginPath()
+			);
+			PluginRegistry::register(
+				'blocks',
+				new InlineHtmlGalleyKeywordsSidebarBlockPlugin($this->getName(), $this->getPluginPath()),
+				$this->getPluginPath()
+			);
+			HookRegistry::register('ArticleHandler::view', array($this, 'articleViewCallback'), HOOK_SEQUENCE_LATE);
 		}
 
 		return true;
