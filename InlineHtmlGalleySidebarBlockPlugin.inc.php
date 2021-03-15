@@ -55,3 +55,39 @@ class InlineHtmlGalleyKeywordsSidebarBlockPlugin extends InlineHtmlGalleySidebar
         return "keywords";
     }
 }
+
+class InlineHtmlGalleyDoiSidebarBlockPlugin extends InlineHtmlGalleySidebarBlockPlugin {
+    function blockName() {
+        return "doi";
+    }
+}
+
+class InlineHtmlGalleyCoverImageSidebarBlockPlugin extends InlineHtmlGalleySidebarBlockPlugin {
+    function blockName() {
+        return "coverImage";
+    }
+}
+
+class InlineHtmlGalleyPublishedDateSidebarBlockPlugin extends InlineHtmlGalleySidebarBlockPlugin {
+    function blockName() {
+        return "publishedDate";
+    }
+}
+
+class InlineHtmlGalleyHowToCiteSidebarBlockPlugin extends InlineHtmlGalleySidebarBlockPlugin {
+    function blockName() {
+        return "howToCite";
+    }
+}
+
+class InlineHtmlGalleyLicenseSidebarBlockPlugin extends InlineHtmlGalleySidebarBlockPlugin {
+    function blockName() {
+        return "license";
+    }
+}
+
+class InlineHtmlGalleyReferencesSidebarBlockPlugin extends InlineHtmlGalleySidebarBlockPlugin {
+    function blockName() {
+        return "references";
+    }
+}

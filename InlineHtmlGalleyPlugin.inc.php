@@ -42,6 +42,36 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 				new InlineHtmlGalleyKeywordsSidebarBlockPlugin($this->getName(), $this->getPluginPath()),
 				$this->getPluginPath()
 			);
+			PluginRegistry::register(
+				'blocks',
+				new InlineHtmlGalleyDoiSidebarBlockPlugin($this->getName(), $this->getPluginPath()),
+				$this->getPluginPath()
+			);
+			PluginRegistry::register(
+				'blocks',
+				new InlineHtmlGalleyCoverImageSidebarBlockPlugin($this->getName(), $this->getPluginPath()),
+				$this->getPluginPath()
+			);
+			PluginRegistry::register(
+				'blocks',
+				new InlineHtmlGalleyPublishedDateSidebarBlockPlugin($this->getName(), $this->getPluginPath()),
+				$this->getPluginPath()
+			);
+			PluginRegistry::register(
+				'blocks',
+				new InlineHtmlGalleyHowToCiteSidebarBlockPlugin($this->getName(), $this->getPluginPath()),
+				$this->getPluginPath()
+			);
+			PluginRegistry::register(
+				'blocks',
+				new InlineHtmlGalleyLicenseSidebarBlockPlugin($this->getName(), $this->getPluginPath()),
+				$this->getPluginPath()
+			);
+			PluginRegistry::register(
+				'blocks',
+				new InlineHtmlGalleyReferencesSidebarBlockPlugin($this->getName(), $this->getPluginPath()),
+				$this->getPluginPath()
+			);
 			HookRegistry::register('ArticleHandler::view', array($this, 'articleViewCallback'), HOOK_SEQUENCE_LATE);
 		}
 
