@@ -8,9 +8,9 @@
  *
  * @uses $boolAuthorInfo bool to check whether at least one author has additional info
  *}
-<div class="pkp_block block_inline_html_authors">	
-	{* authors list *}
-	{if $article->getAuthors()}
+{* authors list *}
+{if $article->getAuthors()}
+	<div class="pkp_block block_inline_html_authors">		
 		<div class="authors_info">
 			<ul class="entry_authors_list">
 				{strip}
@@ -81,6 +81,6 @@
 				{/foreach}
 			</div>
 		</div>
-	{/if}
-</div>
+	</div>
+{/if}
 

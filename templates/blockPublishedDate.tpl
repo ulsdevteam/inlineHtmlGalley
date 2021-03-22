@@ -9,9 +9,9 @@
  * @uses $pubIdPlugins Array of pubId plugins which this article may be assigned
  *
  *}
-<div class="pkp_block block_inline_html_published_date">
-    {* Published date *}
-    {if $article->getDatePublished()}
+{* Published date *}
+{if $article->getDatePublished()}
+    <div class="pkp_block block_inline_html_published_date">
         <div class="published_date">
             <span class="published_date_label">
                 {translate key="submissions.published"}
@@ -20,5 +20,5 @@
                 {$article->getDatePublished()|date_format:$dateFormatLong}
             </span>
         </div>
-    {/if}
-</div>
+    </div>
+{/if}

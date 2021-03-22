@@ -7,9 +7,9 @@
  * Inline HTML Galley License block
  *
  *}
- <div class="pkp_block block_inline_html_license">
-    {* Licensing info *}
-    {if $copyright || $licenseUrl}
+{* Licensing info *}
+{if $copyright || $licenseUrl}
+    <div class="pkp_block block_inline_html_license">
         <div class="item copyright">
             {if $licenseUrl}
                 {if $ccLicenseBadge}
@@ -52,5 +52,5 @@
                 </div>
             {/if}
         </div>
-    {/if}
-</div>
+    </div>
+{/if}

@@ -9,9 +9,9 @@
  * @uses $keywords array List of keywords assigned to this article
  *
  *}
-<div class="pkp_block block_inline_html_keywords">
-    {* Keywords *}
-    {if !empty($keywords[$currentLocale])}
+{* Keywords *}
+{if !empty($keywords[$currentLocale])}
+    <div class="pkp_block block_inline_html_keywords">
         <div class="list-group-item keywords">
             <strong>{capture assign=translatedKeywords}{translate key="article.subject"}{/capture}
                 {translate key="semicolon" label=$translatedKeywords}</strong>
@@ -25,5 +25,5 @@
                 </span>
             </div>
         </div>
-    {/if}
-</div>
+    </div>
+{/if}

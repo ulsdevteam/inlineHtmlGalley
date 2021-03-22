@@ -7,9 +7,9 @@
  * Inline HTML Galley References block
  *
  *}
-<div class="pkp_block block_inline_html_references">
-    {* References *}
-    {if $parsedCitations->getCount() || $article->getCitations()}
+{* References *}
+{if $parsedCitations->getCount() || $article->getCitations()}
+    <div class="pkp_block block_inline_html_references">
         <div class="item references">
             <h3 class="label">
                 {translate key="submission.citations"}
@@ -26,5 +26,5 @@
                 </div>
             {/if}
         </div>
-    {/if}
-</div>
+    </div>
+{/if}

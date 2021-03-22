@@ -60,6 +60,24 @@ class InlineHtmlGalleyDoiSidebarBlockPlugin extends InlineHtmlGalleySidebarBlock
     function blockName() {
         return "doi";
     }
+
+    /**
+	 * @copydoc BlockPlugin::getContents()
+	 */
+	function getContents($templateMgr, $request = null) {
+        if ($templateMgr && $request) {
+            $pubIdPlugins = $templateMgr->getTemplateVars('pubIdPlugins');
+            if ($pubIdPlugins) {
+                foreach ($pubIdPlugins as $pubIdPlugin) {
+                    if ($pubIdPlugin->getPubIdType() == 'doi') {
+                        return parent::getContents($templateMgr, $request);
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
 }
 
 class InlineHtmlGalleyCoverImageSidebarBlockPlugin extends InlineHtmlGalleySidebarBlockPlugin {

@@ -7,9 +7,9 @@
  * Inline HTML Galley How To Cite block
  *
  *}
-<div class="pkp_block block_inline_html_how_to_cite">
-    {* How to cite *}
-    {if $citation}
+{* How to cite *}
+{if $citation}
+    <div class="pkp_block block_inline_html_how_to_cite">
         <div class="item citation">
             <div class="sub_item citation_display">
                 <div class="citation_format_label">
@@ -54,5 +54,5 @@
                 </div>
             </div>
         </div>
-    {/if}
-</div>
+    </div>
+{/if}
