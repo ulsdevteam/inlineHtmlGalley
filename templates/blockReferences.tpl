@@ -10,10 +10,9 @@
 {* References *}
 {if $parsedCitations->getCount() || $article->getCitations()}
     <div class="pkp_block block_inline_html_references">
+        <span class="title"> {translate key="submission.citations"} </span>
+        <div class="content">
         <div class="item references">
-            <h3 class="label">
-                {translate key="submission.citations"}
-            </h3>
             {if $parsedCitations->getCount()}
                 <ol class="references-list">
                     {iterate from=parsedCitations item=parsedCitation}
@@ -25,6 +24,7 @@
                     {$article->getCitations()|nl2br}
                 </div>
             {/if}
+        </div>
         </div>
     </div>
 {/if}

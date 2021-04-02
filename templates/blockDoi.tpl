@@ -10,6 +10,8 @@
  *
  *}
 <div class="pkp_block block_inline_html_doi">
+    <span class="title">{translate key="plugins.pubIds.doi.readerDisplayName"}</span>
+    <div class="content">
     {* DOI (requires plugin) *}
     {foreach from=$pubIdPlugins item=pubIdPlugin}
         {if $pubIdPlugin->getPubIdType() != 'doi'}
@@ -19,10 +21,6 @@
         {if $pubId}
             {assign var="doiUrl" value=$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
             <div class="doi">
-                <span class="doi_label">
-                    {capture assign=translatedDOI}{translate key="plugins.pubIds.doi.readerDisplayName"}{/capture}
-                    {translate key="semicolon" label=$translatedDOI}
-                </span>
                 <span class="doi_value">
                     <a href="{$doiUrl}">
                         {* maching DOI's (with new and old format) *}
@@ -32,4 +30,5 @@
             </div>
         {/if}
     {/foreach}
+    </div>
 </div>

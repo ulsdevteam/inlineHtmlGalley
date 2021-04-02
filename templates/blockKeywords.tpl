@@ -12,10 +12,12 @@
 {* Keywords *}
 {if !empty($keywords[$currentLocale])}
     <div class="pkp_block block_inline_html_keywords">
-        <div class="list-group-item keywords">
-            <strong>{capture assign=translatedKeywords}{translate key="article.subject"}{/capture}
-                {translate key="semicolon" label=$translatedKeywords}</strong>
-            <div class="">
+        <span class="title">
+            {capture assign=translatedKeywords}{translate key="article.subject"}{/capture}
+            {translate key="semicolon" label=$translatedKeywords}
+        </span>
+        <div class="content">
+            <div class="list-group-item keywords">
                 <span class="value">
                     {foreach from=$keywords item=keyword}
                         {foreach name=keywords from=$keyword item=keywordItem}

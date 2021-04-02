@@ -12,13 +12,16 @@
 {* Published date *}
 {if $article->getDatePublished()}
     <div class="pkp_block block_inline_html_published_date">
-        <div class="published_date">
-            <span class="published_date_label">
-                {translate key="submissions.published"}
-            </span>
-            <span class="published_date_value">
-                {$article->getDatePublished()|date_format:$dateFormatLong}
-            </span>
+        <span class="title published_date_label">
+            {capture assign=translatedPublished}{translate key="submissions.published"}{/capture}
+            {translate key="semicolon" label=$translatedPublished}
+        </span>
+        <div class="content">
+            <div class="published_date">
+                <span class="published_date_value">
+                    {$article->getDatePublished()|date_format:$dateFormatLong}
+                </span>
+            </div>
         </div>
     </div>
 {/if}
