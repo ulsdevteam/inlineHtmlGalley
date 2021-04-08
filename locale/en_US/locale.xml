@@ -33,4 +33,6 @@
 	<message key="plugins.generic.inlineHtmlGalley.block.license.description">This block shows license information for the article.</message>
 	<message key="plugins.generic.inlineHtmlGalley.block.references.displayName">Inline HTML Galley Sidebar: References</message>
 	<message key="plugins.generic.inlineHtmlGalley.block.references.description">This block shows article references.</message>
+	<message key="plugins.generic.inlineHtmlGalley.settings.xpath">XPath</message>
+	<message key="plugins.generic.inlineHtmlGalley.settings.xpath.description">This XPath expression will be used to select which elements in the HTML galley will be displayed on the article landing page. If this is left blank, the default behavior is to display the contents of the body tag.</message>
 </locale>

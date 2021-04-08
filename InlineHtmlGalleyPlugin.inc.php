@@ -133,7 +133,7 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 	function _extractBodyContents($html) {
 		$bodyContent = '';
 		try {
-			if (!function_exists('libxml_use_internal_errors') || !class_exists('DOMDocument')) {
+			if (!function_exists('libxml_use_internal_errors') || !class_exists('DOMDocument') || !class_exists('DOMXPath')) {
 				throw new Exception('Missing libxml/dom requirements');
 			}
 			$errorsEnabled = libxml_use_internal_errors();
@@ -153,5 +153,41 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 			$bodyContent = $html;
 		}
 		return $bodyContent;
+	}
+
+	/**
+	 * @copydoc Plugin::manage()
+	 */
+	function manage($args, $request) {
+		$this->import('InlineHtmlGalleySettingsForm');
+		switch ($request->getUserVar('verb')) {
+			case 'settings':
+				$settingsForm = new InlineHtmlGalleySettingsForm($this, $request->getContext()->getId());
+				$settingsForm->initData();
+				return new JSONMessage(true, $settingsForm->fetch($request));
+		}
+		return parent::manage($args, $request);
+	}
+
+	/**
+	 * @copydoc Plugin::getActions()
+	 */
+	function getActions($request, $verb) {
+		$router = $request->getRouter();
+		import('lib.pkp.classes.linkAction.request.AjaxModal');
+		return array_merge(
+			$this->getEnabled()?array(
+				new LinkAction(
+					'settings',
+					new AjaxModal(
+						$router->url($request, null, null, 'manage', null, array('verb' => 'settings', 'plugin' => $this->getName(), 'category' => 'generic')),
+						$this->getDisplayName()
+					),
+					__('manager.plugins.settings'),
+					null
+				),
+			):array(),
+			parent::getActions($request, $verb)
+		);
 	}
 }
