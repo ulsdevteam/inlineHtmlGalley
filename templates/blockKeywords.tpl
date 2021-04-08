@@ -17,14 +17,12 @@
             {translate key="semicolon" label=$translatedKeywords}
         </span>
         <div class="content">
-            <div class="list-group-item keywords">
-                <span class="value">
-                    {foreach from=$keywords item=keyword}
-                        {foreach name=keywords from=$keyword item=keywordItem}
-                            {$keywordItem|escape}{if !$smarty.foreach.keywords.last}, {/if}
-                        {/foreach}
+            <div class="keywords">
+                {foreach from=$keywords item=keyword}
+                    {foreach name=keywords from=$keyword item=keywordItem}
+                        {$keywordItem|escape}{if !$smarty.foreach.keywords.last}, {/if}
                     {/foreach}
-                </span>
+                {/foreach}
             </div>
         </div>
     </div>
