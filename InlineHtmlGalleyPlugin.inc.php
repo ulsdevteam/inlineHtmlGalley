@@ -114,7 +114,7 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 					'galley' => $galley,
 				));
 				$inlineHtmlGalley = $this->_getHTMLContents($request, $galley);
-				$inlineHtmlGalleyBody = $this->_extractBodyContents($inlineHtmlGalley);
+				$inlineHtmlGalleyBody = $this->_extractBodyContents($inlineHtmlGalley, $request->getContext()->getId());
 				$templateMgr->assign('inlineHtmlGalley', $inlineHtmlGalleyBody);
 				$templateMgr->display($this->getTemplateResource('displayInline.tpl'));
 
@@ -128,9 +128,10 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 	/**
 	 * Return string containing the contents of the HTML body
 	 * @param $html string
+	 * @param $contextId int
 	 * @return string
 	 */
-	function _extractBodyContents($html) {
+	function _extractBodyContents($html, $contextId) {
 		$bodyContent = '';
 		try {
 			if (!function_exists('libxml_use_internal_errors') || !class_exists('DOMDocument') || !class_exists('DOMXPath')) {
@@ -139,12 +140,21 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 			$errorsEnabled = libxml_use_internal_errors();
 			libxml_use_internal_errors(true);
 			$dom = DOMDocument::loadHTML($html);
-			$tags = $dom->getElementsByTagName('body');
-			foreach ($tags as $body) {
-				foreach ($body->childNodes as $child) {
-					$bodyContent .= $dom->saveHTML($child);
+			$xpath = $this->getSetting($contextId, 'xpath');
+			if (empty($xpath)) {
+				$tags = $dom->getElementsByTagName('body');
+				foreach ($tags as $body) {
+					foreach ($body->childNodes as $child) {
+						$bodyContent .= $dom->saveHTML($child);
+					}
+					last;
 				}
-				last;
+			} else {
+				$domXpath = new DOMXPath($dom);
+				$tags = $domXpath->query($xpath);
+				foreach ($tags as $tag) {
+					$bodyContent .= $dom->saveHTML($tag);
+				}
 			}
 			libxml_use_internal_errors($errorsEnabled);
 		} catch (Exception $e) {
@@ -160,11 +170,18 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 	 */
 	function manage($args, $request) {
 		$this->import('InlineHtmlGalleySettingsForm');
-		switch ($request->getUserVar('verb')) {
-			case 'settings':
-				$settingsForm = new InlineHtmlGalleySettingsForm($this, $request->getContext()->getId());
+		if ($request->getUserVar('verb') == 'settings') {
+			$settingsForm = new InlineHtmlGalleySettingsForm($this, $request->getContext()->getId());
+			if ($request->getUserVar('save')) {
+				$settingsForm->readInputData();
+				if ($settingsForm->validate()) {
+					$settingsForm->execute();
+					return new JSONMessage(true);
+				}
+			} else {
 				$settingsForm->initData();
-				return new JSONMessage(true, $settingsForm->fetch($request));
+			}
+			return new JSONMessage(true, $settingsForm->fetch($request));
 		}
 		return parent::manage($args, $request);
 	}

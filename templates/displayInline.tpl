@@ -63,7 +63,6 @@
 		{* Article abstract *}
 		{if $article->getLocalizedAbstract()}
 			<div class="article-summary" id="summary">
-				<h2>{translate key="article.abstract"}</h2>
 				<div class="article-abstract">
 					{$article->getLocalizedAbstract()|strip_unsafe_html|nl2br}
 				</div>

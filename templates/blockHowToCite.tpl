@@ -11,8 +11,7 @@
 {if $citation}
     <div class="pkp_block block_inline_html_how_to_cite">
         <span class="title citation_format_label">
-            {capture assign=translatedHowToCite}{translate key="submission.howToCite"}{/capture}
-            {translate key="semicolon" label=$translatedHowToCite}
+            {translate key="submission.howToCite"}
         </span>
         <div class="content">
             <div class="item citation">

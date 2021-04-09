@@ -13,8 +13,7 @@
 {if $article->getDatePublished()}
     <div class="pkp_block block_inline_html_published_date">
         <span class="title published_date_label">
-            {capture assign=translatedPublished}{translate key="submissions.published"}{/capture}
-            {translate key="semicolon" label=$translatedPublished}
+            {translate key="submissions.published"}
         </span>
         <div class="content">
             <div class="published_date">

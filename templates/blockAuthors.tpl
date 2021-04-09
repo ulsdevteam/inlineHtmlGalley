@@ -12,8 +12,7 @@
 {if $article->getAuthors()}
 	<div class="pkp_block block_inline_html_authors">
 		<span class="title">
-			{capture assign=translatedAuthors}{translate key="submission.authors"}{/capture}
-			{translate key="semicolon" label=$translatedAuthors}
+			{translate key="submission.authors"}
 		</span>
 		<div class="content">
 			<div class="authors_info">

@@ -20,5 +20,6 @@
         {fbvFormSection title="plugins.generic.inlineHtmlGalley.settings.xpath" description="plugins.generic.inlineHtmlGalley.settings.xpath.description"}
             {fbvElement type="text" id="xpath" value=$xpath size=$fbvStyles.size.MEDIUM}
         {/fbvFormSection}
-    {fbvFormArea}
+    {/fbvFormArea}
+	{fbvFormButtons id="inlineHtmlGalleySettingsFormSubmit" submitText="common.save"}
 </form>

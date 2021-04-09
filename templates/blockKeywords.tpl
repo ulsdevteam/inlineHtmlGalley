@@ -13,8 +13,7 @@
 {if !empty($keywords[$currentLocale])}
     <div class="pkp_block block_inline_html_keywords">
         <span class="title">
-            {capture assign=translatedKeywords}{translate key="article.subject"}{/capture}
-            {translate key="semicolon" label=$translatedKeywords}
+            {translate key="article.subject"}
         </span>
         <div class="content">
             <div class="keywords">

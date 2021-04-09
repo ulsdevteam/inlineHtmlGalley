@@ -11,8 +11,7 @@
 {if $copyright || $licenseUrl}
     <div class="pkp_block block_inline_html_license">
         <span class="title">
-            {capture assign=translatedLicense}{translate key="submission.license"}{/capture}
-            {translate key="semicolon" label=$translatedLicense}
+            {translate key="submission.license"}
         </span>
         <div class="content">
             <div class="item copyright">
