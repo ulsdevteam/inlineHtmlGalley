@@ -12,10 +12,10 @@
     <div class="pkp_block block_inline_html_cover_image">
          <div class="article_cover_wrapper">
             {if $article->getLocalizedCoverImage()}
-                <img class="img-fluid" src="{$article->getLocalizedCoverImageUrl()|escape}"{if $article->getLocalizedCoverImageAltText()} alt="{$article->getLocalizedCoverImageAltText()|escape}"{/if}>
+                <img class="img-fluid img-responsive" src="{$article->getLocalizedCoverImageUrl()|escape}"{if $article->getLocalizedCoverImageAltText()} alt="{$article->getLocalizedCoverImageAltText()|escape}"{/if}>
             {else}
                 <a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
-                    <img class="img-fluid" src="{$issue->getLocalizedCoverImageUrl()|escape}"{if $issue->getLocalizedCoverImageAltText()} alt="{$issue->getLocalizedCoverImageAltText()|escape}"{/if}>
+                    <img class="img-fluid img-responsive" src="{$issue->getLocalizedCoverImageUrl()|escape}"{if $issue->getLocalizedCoverImageAltText()} alt="{$issue->getLocalizedCoverImageAltText()|escape}"{/if}>
                 </a>
             {/if}
         </div>
