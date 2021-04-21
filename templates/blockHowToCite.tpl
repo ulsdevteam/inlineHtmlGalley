@@ -9,51 +9,33 @@
  *}
 {* How to cite *}
 {if $citation}
-    <div class="pkp_block block_inline_html_how_to_cite">
-        <span class="title citation_format_label">
+    <div class="pkp_block block_inline_html_how_to_cite how-to-cite">
+        <div class="title">
             {translate key="submission.howToCite"}
-        </span>
+        </div>
         <div class="content">
-            <div class="item citation">
-                <div class="sub_item citation_display">
-                    <div class="citation_format_value">
-                        <div id="citationOutput" role="region" aria-live="polite">
-                            {$citation}
-                        </div>
-                        <div class="citation_formats dropdown">
-                            <a class="btn btn-primary" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                {translate key="submission.howToCite.citationFormats"}
+            <div id="citationOutput" role="region" aria-live="polite">
+                {$citation}
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-controls="cslCitationFormats">
+                {translate key="submission.howToCite.citationFormats"}
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    {foreach from=$citationStyles item="citationStyle"}
+                        <li>
+                            <a
+                                aria-controls="citationOutput"
+                                href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgs}"
+                                data-load-citation
+                                data-json-href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgsJson}"
+                            >
+                                {$citationStyle.title|escape}
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdown-cit">
-                                {foreach from=$citationStyles item="citationStyle"}
-                                    <a
-                                            class="dropdown-cite-link dropdown-item"
-                                            aria-controls="citationOutput"
-                                            href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgs}"
-                                            data-load-citation
-                                            data-json-href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgsJson}"
-                                    >
-                                        {$citationStyle.title|escape}
-                                    </a>
-                                {/foreach}
-                                {if count($citationDownloads)}
-                                    <div class="dropdown-divider"></div>
-                                    <h4 class="download-cite">
-                                        {translate key="submission.howToCite.downloadCitation"}
-                                    </h4>
-                                    {foreach from=$citationDownloads item="citationDownload"}
-                                        <a class="dropdown-item"
-                                            href="{url page="citationstylelanguage" op="download" path=$citationDownload.id params=$citationArgs}">
-                                            <span class="fa fa-download"></span>
-                                            {$citationDownload.title|escape}
-                                        </a>
-                                    {/foreach}
-                                {/if}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </li>
+                    {/foreach}
+                </ul>
             </div>
         </div>
     </div>
