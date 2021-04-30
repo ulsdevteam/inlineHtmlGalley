@@ -72,6 +72,11 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 				new InlineHtmlGalleyReferencesSidebarBlockPlugin($this->getName(), $this->getPluginPath()),
 				$this->getPluginPath()
 			);
+			PluginRegistry::register(
+				'blocks',
+				new InlineHtmlGalleyGalleysSidebarBlockPlugin($this->getName(), $this->getPluginPath()),
+				$this->getPluginPath()
+			);
 			HookRegistry::register('ArticleHandler::view', array($this, 'articleViewCallback'), HOOK_SEQUENCE_LATE);
 		}
 
@@ -99,26 +104,28 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 	 * @param array $args
 	 */
 	function articleViewCallback($hookName, $args) {
-		$request =& $args[0];
-		$issue =& $args[1];
-		$article =& $args[2];
-		$galleys = $article->getGalleys();
-		if (!$galleys) return false;
+		if ($hookName == "ArticleHandler::view") {
+			$request =& $args[0];
+			$issue =& $args[1];
+			$article =& $args[2];
+			$galleys = $article->getGalleys();
+			if (!$galleys) return false;
 
-		foreach ($galleys as $galley) {
-			if ($galley->getFileType() == 'text/html') {
-				$templateMgr = TemplateManager::getManager($request);
-				$templateMgr->assign(array(
-					'issue' => $issue,
-					'article' => $article,
-					'galley' => $galley,
-				));
-				$inlineHtmlGalley = $this->_getHTMLContents($request, $galley);
-				$inlineHtmlGalleyBody = $this->_extractBodyContents($inlineHtmlGalley, $request->getContext()->getId());
-				$templateMgr->assign('inlineHtmlGalley', $inlineHtmlGalleyBody);
-				$templateMgr->display($this->getTemplateResource('displayInline.tpl'));
+			foreach ($galleys as $galley) {
+				if ($galley->getFileType() == 'text/html') {
+					$templateMgr = TemplateManager::getManager($request);
+					$templateMgr->assign(array(
+						'issue' => $issue,
+						'article' => $article,
+						'galley' => $galley,
+					));
+					$inlineHtmlGalley = $this->_getHTMLContents($request, $galley);
+					$inlineHtmlGalleyBody = $this->_extractBodyContents($inlineHtmlGalley, $request->getContext()->getId());
+					$templateMgr->assign('inlineHtmlGalley', $inlineHtmlGalleyBody);
+					$templateMgr->display($this->getTemplateResource('displayInline.tpl'));
 
-				return true;
+					return true;
+				}
 			}
 		}
 

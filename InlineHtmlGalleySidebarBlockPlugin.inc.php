@@ -109,3 +109,9 @@ class InlineHtmlGalleyReferencesSidebarBlockPlugin extends InlineHtmlGalleySideb
         return "references";
     }
 }
+
+class InlineHtmlGalleyGalleysSidebarBlockPlugin extends InlineHtmlGalleySidebarBlockPlugin {
+    function blockName() {
+        return "galleys";
+    }
+}
