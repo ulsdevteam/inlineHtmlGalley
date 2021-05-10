@@ -17,10 +17,10 @@
             <div class="item copyright">
                 {if $licenseUrl}
                     {if $ccLicenseBadge}
+                        {$ccLicenseBadge}
                         {if $copyrightHolder}
                             <p>{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder|escape copyrightYear=$copyrightYear|escape}</p>
                         {/if}
-                        {$ccLicenseBadge}
                     {else}
                         <a href="{$licenseUrl|escape}" class="copyright">
                             {if $copyrightHolder}

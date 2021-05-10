@@ -118,6 +118,7 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 						'issue' => $issue,
 						'article' => $article,
 						'galley' => $galley,
+						'orcidIcon' => $this->getOrcidIcon()
 					));
 					$inlineHtmlGalley = $this->_getHTMLContents($request, $galley);
 					$inlineHtmlGalleyBody = $this->_extractBodyContents($inlineHtmlGalley, $request->getContext()->getId());
@@ -170,6 +171,16 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 			$bodyContent = $html;
 		}
 		return $bodyContent;
+	}
+
+	/**
+	 * Return a string of the ORCiD SVG icon
+	 *
+	 * @return string
+	 */
+	function getOrcidIcon() {
+		$path = Core::getBaseDir() . '/' . $this->getPluginPath() . '/templates/images/orcid.svg';
+		return file_exists($path) ? file_get_contents($path) : '';
 	}
 
 	/**
