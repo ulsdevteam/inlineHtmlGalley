@@ -37,4 +37,5 @@
 	<message key="plugins.generic.inlineHtmlGalley.block.galleys.description">This block shows download links for any article galleys.</message>
 	<message key="plugins.generic.inlineHtmlGalley.settings.xpath">XPath</message>
 	<message key="plugins.generic.inlineHtmlGalley.settings.xpath.description">This XPath expression will be used to select which elements in the HTML galley will be displayed on the article landing page. If this is left blank, the default behavior is to display the contents of the body tag.</message>
+	<message key="plugins.generic.inlineHtmlGalley.backToTop">Back to Top</message>
 </locale>

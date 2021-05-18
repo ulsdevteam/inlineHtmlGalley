@@ -25,6 +25,9 @@
 		{include file="frontend/components/breadcrumbs_article.tpl" currentTitleKey="article.article"}
 	{/if}
 
+	{* Anchor for "Back to Top" button *}
+	<a name="top"></a>
+
 	<header>
 		<h1 class="page-header">
 			{$article->getLocalizedTitle()|escape}
@@ -80,6 +83,13 @@
 	{* Show article inline *}
 	<div class="inline_html_galley">
 	{$inlineHtmlGalley}
+	</div>
+
+	<div class="reader-options">
+		<a class="back-to-top" href="#top">
+			<span class="arrow-gylph">↑</span>
+			{translate key="plugins.generic.inlineHtmlGalley.backToTop"}
+		</a>
 	</div>
 
 	{call_hook name="Templates::Article::Footer::PageFooter"}
