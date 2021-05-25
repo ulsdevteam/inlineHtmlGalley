@@ -25,6 +25,54 @@
 		{include file="frontend/components/breadcrumbs_article.tpl" currentTitleKey="article.article"}
 	{/if}
 
+	{* Anchor for "Back to Top" button *}
+	<a name="top"></a>
+
+	<header>
+		<h1 class="page-header">
+			{$article->getLocalizedTitle()|escape}
+			{if $article->getLocalizedSubtitle()}
+				<small>
+					{$article->getLocalizedSubtitle()|escape}
+				</small>
+			{/if}
+		</h1>
+	</header>
+
+	<div class="article-main">
+		{if $article->getAuthors()}
+			<div class="authors">
+				{foreach from=$article->getAuthors() item=author}
+					<div class="author">
+						<strong>{$author->getFullName()|escape}</strong>
+						{if $author->getLocalizedAffiliation()}
+							<div class="article-author-affilitation">
+								{$author->getLocalizedAffiliation()|escape}
+							</div>
+						{/if}
+						{if $author->getOrcid()}
+							<div class="orcid">
+								<a href="{$author->getOrcid()|escape}" target="_blank">
+									{$orcidIcon}
+									{$author->getOrcid()|escape}
+								</a>
+							</div>
+						{/if}
+					</div>
+				{/foreach}
+			</div>
+		{/if}
+
+		{* Article abstract *}
+		{if $article->getLocalizedAbstract()}
+			<div class="article-summary" id="summary">
+				<div class="article-abstract">
+					{$article->getLocalizedAbstract()|strip_unsafe_html|nl2br}
+				</div>
+			</div>
+		{/if}
+	</div>
+
 	{* Provide download link *}
 	<div class="inline_html_galley_download">
 		<a class="obj_galley_link file" href="{url page="article" op="download" path=$article->getBestArticleId()|to_array:$galley->getBestGalleyId()}">
@@ -35,6 +83,13 @@
 	{* Show article inline *}
 	<div class="inline_html_galley">
 	{$inlineHtmlGalley}
+	</div>
+
+	<div class="reader-options">
+		<a class="back-to-top" href="#top">
+			<span class="arrow-gylph">↑</span>
+			{translate key="plugins.generic.inlineHtmlGalley.backToTop"}
+		</a>
 	</div>
 
 	{call_hook name="Templates::Article::Footer::PageFooter"}
