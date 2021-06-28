@@ -78,6 +78,7 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 				$this->getPluginPath()
 			);
 			HookRegistry::register('ArticleHandler::view', array($this, 'articleViewCallback'), HOOK_SEQUENCE_LATE);
+			HookRegistry::register('TemplateResource::getFilename', array($this, '_overridePluginTemplates'));
 		}
 
 		return true;
