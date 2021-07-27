@@ -13,7 +13,7 @@
   -->
 
 <locale name="en_US" full_name="U.S. English">
-	<message key="plugins.generic.inlineHtmlGalley.displayName">Inline HTML Galley</message>
+	<message key="plugins.generic.inlineHtmlGalley.displayName">Bootstrap Galley Plugin</message>
 	<message key="plugins.generic.inlineHtmlGalley.description">This plugin provides inline rendering support for HTML Galleys.</message>
 	<message key="plugins.generic.inlineHtmlGalley.block.download.displayName">HTML Galley Download Link</message>
 	<message key="plugins.generic.inlineHtmlGalley.block.download.description">This block provides a link to download the HTML Galley directly.</message>
