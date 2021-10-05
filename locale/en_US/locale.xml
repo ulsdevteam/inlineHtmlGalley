@@ -13,8 +13,29 @@
   -->
 
 <locale name="en_US" full_name="U.S. English">
-	<message key="plugins.generic.inlineHtmlGalley.displayName">Inline HTML Galley</message>
+	<message key="plugins.generic.inlineHtmlGalley.displayName">Inline HTML Galley for Bootstrap</message>
 	<message key="plugins.generic.inlineHtmlGalley.description">This plugin provides inline rendering support for HTML Galleys.</message>
-	<message key="plugins.generic.inlineHtmlGalley.block.displayName">HTML Galley Download Link</message>
-	<message key="plugins.generic.inlineHtmlGalley.block.description">This block provides a link to download the HTML Galley directly.</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.download.displayName">HTML Galley Download Link</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.download.description">This block provides a link to download the HTML Galley directly.</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.keywords.displayName">Inline HTML Galley Sidebar: Keywords</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.keywords.description">This block displays the article's keywords.</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.authors.displayName">Inline HTML Galley Sidebar: Authors</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.authors.description">This block displays the article's authors.</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.doi.displayName">Inline HTML Galley Sidebar: DOI</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.doi.description">This block provides a DOI link.</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.coverImage.displayName">Inline HTML Galley Sidebar: Article/Issue Cover Image</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.coverImage.description">This block shows the article/issue cover image.</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.publishedDate.displayName">Inline HTML Galley Sidebar: Published Date</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.publishedDate.description">This block shows the publishing date of the article.</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.howToCite.displayName">Inline HTML Galley Sidebar: How To Cite</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.howToCite.description">This block shows citation information for the article.</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.license.displayName">Inline HTML Galley Sidebar: License</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.license.description">This block shows license information for the article.</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.references.displayName">Inline HTML Galley Sidebar: References</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.references.description">This block shows article references.</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.galleys.displayName">Inline HTML Galley Sidebar: Galleys</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.galleys.description">This block shows download links for any article galleys.</message>
+	<message key="plugins.generic.inlineHtmlGalley.settings.xpath">XPath</message>
+	<message key="plugins.generic.inlineHtmlGalley.settings.xpath.description">This XPath expression will be used to select which elements in the HTML galley will be displayed on the article landing page. If this is left blank, the default behavior is to display the contents of the body tag.</message>
+	<message key="plugins.generic.inlineHtmlGalley.backToTop">Back to Top</message>
 </locale>
