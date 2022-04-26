@@ -54,6 +54,11 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 			);
 			PluginRegistry::register(
 				'blocks',
+				new InlineHtmlGalleyDetailsSidebarBlockPlugin($this->getName(), $this->getPluginPath()),
+				$this->getPluginPath()
+			);
+			PluginRegistry::register(
+				'blocks',
 				new InlineHtmlGalleyPublishedDateSidebarBlockPlugin($this->getName(), $this->getPluginPath()),
 				$this->getPluginPath()
 			);
