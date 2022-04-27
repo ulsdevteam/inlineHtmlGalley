@@ -90,4 +90,4 @@ msgid "plugins.generic.inlineHtmlGalley.settings.xpath.description"
 msgstr "This XPath expression will be used to select which elements in the HTML galley will be displayed on the article landing page. If this is left blank, the default behavior is to display the contents of the body tag."
 
 msgid "plugins.generic.inlineHtmlGalley.backToTop"
-msgstr "Back to Topp "
+msgstr "Back to Top"
