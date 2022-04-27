@@ -86,6 +86,12 @@ class InlineHtmlGalleyCoverImageSidebarBlockPlugin extends InlineHtmlGalleySideb
     }
 }
 
+class InlineHtmlGalleyDetailsSidebarBlockPlugin extends InlineHtmlGalleySidebarBlockPlugin {
+    function blockName() {
+        return "details";
+    }
+}
+
 class InlineHtmlGalleyPublishedDateSidebarBlockPlugin extends InlineHtmlGalleySidebarBlockPlugin {
     function blockName() {
         return "publishedDate";

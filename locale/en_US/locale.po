@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-10-06T11:07:43-04:00\n"
+"PO-Revision-Date: 2021-10-06T11:07:43-04:00\n"
+"Language: \n"
+
+msgid "plugins.generic.inlineHtmlGalley.displayName"
+msgstr "Inline HTML Galley for Bootstrap"
+
+msgid "plugins.generic.inlineHtmlGalley.description"
+msgstr "This plugin provides inline rendering support for HTML Galleys."
+
+msgid "plugins.generic.inlineHtmlGalley.block.download.displayName"
+msgstr "HTML Galley Download Link"
+
+msgid "plugins.generic.inlineHtmlGalley.block.download.description"
+msgstr "This block provides a link to download the HTML Galley directly."
+
+msgid "plugins.generic.inlineHtmlGalley.block.keywords.displayName"
+msgstr "Inline HTML Galley Sidebar: Keywords"
+
+msgid "plugins.generic.inlineHtmlGalley.block.keywords.description"
+msgstr "This block displays the article's keywords."
+
+msgid "plugins.generic.inlineHtmlGalley.block.authors.displayName"
+msgstr "Inline HTML Galley Sidebar: Authors"
+
+msgid "plugins.generic.inlineHtmlGalley.block.authors.description"
+msgstr "This block displays the article's authors."
+
+msgid "plugins.generic.inlineHtmlGalley.block.doi.displayName"
+msgstr "Inline HTML Galley Sidebar: DOI"
+
+msgid "plugins.generic.inlineHtmlGalley.block.doi.description"
+msgstr "This block provides a DOI link."
+
+msgid "plugins.generic.inlineHtmlGalley.block.coverImage.displayName"
+msgstr "Inline HTML Galley Sidebar: Article/Issue Cover Image"
+
+msgid "plugins.generic.inlineHtmlGalley.block.coverImage.description"
+msgstr "This block shows the article/issue cover image."
+
+msgid "plugins.generic.inlineHtmlGalley.block.details.displayName"
+msgstr "Inline HTML Galley Sidebar: Article Details"
+
+msgid "plugins.generic.inlineHtmlGalley.block.article.description"
+msgstr "This block provides a location for content formerly shown in the Article Details section in non-inlineHtmlGalley sites."
+
+msgid "plugins.generic.inlineHtmlGalley.block.publishedDate.displayName"
+msgstr "Inline HTML Galley Sidebar: Published Date"
+
+msgid "plugins.generic.inlineHtmlGalley.block.publishedDate.description"
+msgstr "This block shows the publishing date of the article."
+
+msgid "plugins.generic.inlineHtmlGalley.block.howToCite.displayName"
+msgstr "Inline HTML Galley Sidebar: How To Cite"
+
+msgid "plugins.generic.inlineHtmlGalley.block.howToCite.description"
+msgstr "This block shows citation information for the article."
+
+msgid "plugins.generic.inlineHtmlGalley.block.license.displayName"
+msgstr "Inline HTML Galley Sidebar: License"
+
+msgid "plugins.generic.inlineHtmlGalley.block.license.description"
+msgstr "This block shows license information for the article."
+
+msgid "plugins.generic.inlineHtmlGalley.block.references.displayName"
+msgstr "Inline HTML Galley Sidebar: References"
+
+msgid "plugins.generic.inlineHtmlGalley.block.references.description"
+msgstr "This block shows article references."
+
+msgid "plugins.generic.inlineHtmlGalley.block.galleys.displayName"
+msgstr "Inline HTML Galley Sidebar: Galleys"
+
+msgid "plugins.generic.inlineHtmlGalley.block.galleys.description"
+msgstr "This block shows download links for any article galleys."
+
+msgid "plugins.generic.inlineHtmlGalley.settings.xpath"
+msgstr "XPath"
+
+msgid "plugins.generic.inlineHtmlGalley.settings.xpath.description"
+msgstr "This XPath expression will be used to select which elements in the HTML galley will be displayed on the article landing page. If this is left blank, the default behavior is to display the contents of the body tag."
+
+msgid "plugins.generic.inlineHtmlGalley.backToTop"
+msgstr "Back to Topp "
