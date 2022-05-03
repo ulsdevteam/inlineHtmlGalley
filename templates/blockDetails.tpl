@@ -7,10 +7,13 @@
  * Inline HTML Galley download block
  *
  *}
+{capture name='detailsBlockContent'}{call_hook name="Templates::Article::Details"}{/capture}
+{if $smarty.capture.detailsBlockContent ne ""}
 <div class="pkp_block block_inline_html_details">
 	<h2 class="title">{translate key="article.details"}</h2>
 	<div class="content">
-                {call_hook name="Templates::Article::Details"}
+		{$smarty.capture.detailsBlockContent}
 	</div>
 </div>
+{/if}
 
