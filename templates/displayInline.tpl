@@ -70,6 +70,7 @@
 					{$article->getLocalizedAbstract()|strip_unsafe_html|nl2br}
 				</div>
 			</div>
+			{call_hook name="Templates::Article::Main"}
 		{/if}
 	</div>
 
