@@ -50,7 +50,7 @@ msgstr "This block shows the article/issue cover image."
 msgid "plugins.generic.inlineHtmlGalley.block.details.displayName"
 msgstr "Inline HTML Galley Sidebar: Article Details"
 
-msgid "plugins.generic.inlineHtmlGalley.block.article.description"
+msgid "plugins.generic.inlineHtmlGalley.block.details.description"
 msgstr "This block provides a location for content formerly shown in the Article Details section in non-inlineHtmlGalley sites."
 
 msgid "plugins.generic.inlineHtmlGalley.block.publishedDate.displayName"
