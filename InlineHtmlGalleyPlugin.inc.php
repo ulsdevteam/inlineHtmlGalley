@@ -162,6 +162,7 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 					foreach ($body->childNodes as $child) {
 						$bodyContent .= $dom->saveHTML($child);
 					}
+					break;
 				}
 			} else {
 				$domXpath = new DOMXPath($dom);
