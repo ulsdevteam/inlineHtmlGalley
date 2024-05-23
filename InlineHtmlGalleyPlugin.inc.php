@@ -153,7 +153,8 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 			}
 			$errorsEnabled = libxml_use_internal_errors();
 			libxml_use_internal_errors(true);
-			$dom = DOMDocument::loadHTML($html);
+			$dom = new DOMDocument();
+			$dom->loadHTML($html);
 			$xpath = $this->getSetting($contextId, 'xpath');
 			if (empty($xpath)) {
 				$tags = $dom->getElementsByTagName('body');
@@ -161,7 +162,6 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 					foreach ($body->childNodes as $child) {
 						$bodyContent .= $dom->saveHTML($child);
 					}
-					last;
 				}
 			} else {
 				$domXpath = new DOMXPath($dom);
