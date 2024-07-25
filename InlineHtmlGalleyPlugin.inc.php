@@ -83,7 +83,21 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 				$this->getPluginPath()
 			);
 			HookRegistry::register('ArticleHandler::view', array($this, 'articleViewCallback'), HOOK_SEQUENCE_LATE);
-			HookRegistry::register('TemplateResource::getFilename', array($this, '_overridePluginTemplates'), HOOK_SEQUENCE_CORE);
+			//check if bootstrap3 is the active theme
+			$request = Application::get()->getRequest();
+			$context = $request->getContext();
+			if ($context instanceof Context) {
+				$activeTheme = $context->getData('themePluginPath');
+			} else {
+				$site = $request->getSite();
+				$activeTheme = $site->getData('themePluginPath');
+			}
+			if ($activeTheme != 'bootstrap3') {
+				error_log('InlineHTMLGalleyPlugin: bootstrap3 not enabled. Active theme: '. $activeTheme);
+			}
+			else {
+				HookRegistry::register('TemplateResource::getFilename', array($this, '_overridePluginTemplates'), HOOK_SEQUENCE_CORE);
+			}		
 		}
 
 		return true;
