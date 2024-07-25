@@ -54,7 +54,7 @@ class InlineHtmlGalleySettingsForm extends Form {
     /**
      * @copydoc Form::fetch()
      */
-    function fetch($request) {
+    function fetch($request, $template = null, $display = false) {
         $templateMgr = TemplateManager::getManager($request);
         $templateMgr->assign('pluginName', $this->plugin->getName());
 
@@ -64,7 +64,7 @@ class InlineHtmlGalleySettingsForm extends Form {
     /**
      * @copydoc Form::execute()
      */
-    function execute() {
+    function execute(...$functionArgs) {
         $this->plugin->updateSetting($this->contextId, 'xpath', $this->getData('xpath'));
     }
 }
