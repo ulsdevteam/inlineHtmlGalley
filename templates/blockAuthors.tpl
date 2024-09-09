@@ -9,7 +9,7 @@
  * @uses $boolAuthorInfo bool to check whether at least one author has additional info
  *}
 
- {if $publication->getData('authors')}
+ {if count($publication->getData('authors'))}
 	<div class="pkp_block block_inline_html_authors">
 		<span class="title">
 		{translate key="submission.authors"}
