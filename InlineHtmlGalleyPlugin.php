@@ -13,8 +13,24 @@
  *
  * @brief Class for InlineHtmlGalley plugin
  */
+namespace APP\plugins\generic\inlineHtmlGalley;
 
-import('plugins.generic.htmlArticleGalley.HtmlArticleGalleyPlugin');
+use PKP\plugins\PluginRegistry;
+use PKP\linkAction\LinkAction;
+use PKP\linkAction\request\AjaxModal;
+use PKP\core\JSONMessage;
+use PKP\plugins\Hook;
+use PKP\core\Core;
+use Exception;
+use DOMDocument;
+use DOMXPath;
+use APP\plugins\generic\htmlArticleGalley\HtmlArticleGalleyPlugin;
+use APP\plugins\generic\inlineHtmlGalley\InlineHtmlGalleyBlockPlugin;
+use APP\plugins\generic\inlineHtmlGalley\InlineHtmlGalleySidebarBlockPlugin;
+use APP\plugins\generic\inlineHtmlGalley\InlineHtmlGalleySettingsForm;
+use APP\template\TemplateManager;
+
+include "InlineHtmlGalleySidebarBlockPlugin.php";
 
 class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 	/**
@@ -25,13 +41,11 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 		if (!$success) return false;
 		if ($success && $this->getEnabled()) {
 			// Load this plugin as a block plugin as well
-			$this->import('InlineHtmlGalleyBlockPlugin');
 			PluginRegistry::register(
 				'blocks',
 				new InlineHtmlGalleyBlockPlugin($this->getName(), $this->getPluginPath()),
 				$this->getPluginPath()
 			);
-			$this->import('InlineHtmlGalleySidebarBlockPlugin');
 			PluginRegistry::register(
 				'blocks',
 				new InlineHtmlGalleyAuthorsSidebarBlockPlugin($this->getName(), $this->getPluginPath()),
@@ -82,8 +96,8 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 				new InlineHtmlGalleyGalleysSidebarBlockPlugin($this->getName(), $this->getPluginPath()),
 				$this->getPluginPath()
 			);
-			HookRegistry::register('ArticleHandler::view', array($this, 'articleViewCallback'), HOOK_SEQUENCE_LATE);
-			HookRegistry::register('TemplateResource::getFilename', array($this, '_overridePluginTemplates'), HOOK_SEQUENCE_CORE);
+			Hook::add('ArticleHandler::view', array($this, 'articleViewCallback'), HOOK_SEQUENCE_LATE);
+			Hook::add('TemplateResource::getFilename', array($this, '_overridePluginTemplates'), HOOK_SEQUENCE_CORE);
 		}
 
 		return true;
@@ -114,6 +128,7 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 			$request =& $args[0];
 			$issue =& $args[1];
 			$article =& $args[2];
+			$publication = $args[3];
 			$galleys = $article->getGalleys();
 			if (!$galleys) return false;
 
@@ -123,6 +138,7 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 					$templateMgr->assign(array(
 						'issue' => $issue,
 						'article' => $article,
+						'publication' => $publication,
 						'galley' => $galley,
 						'orcidIcon' => $this->getOrcidIcon()
 					));
@@ -130,7 +146,6 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 					$inlineHtmlGalleyBody = $this->_extractBodyContents($inlineHtmlGalley, $request->getContext()->getId());
 					$templateMgr->assign('inlineHtmlGalley', $inlineHtmlGalleyBody);
 					$templateMgr->display($this->getTemplateResource('displayInline.tpl'));
-
 					return true;
 				}
 			}
@@ -194,7 +209,6 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 	 * @copydoc Plugin::manage()
 	 */
 	function manage($args, $request) {
-		$this->import('InlineHtmlGalleySettingsForm');
 		if ($request->getUserVar('verb') == 'settings') {
 			$settingsForm = new InlineHtmlGalleySettingsForm($this, $request->getContext()->getId());
 			if ($request->getUserVar('save')) {
@@ -216,7 +230,6 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 	 */
 	function getActions($request, $verb) {
 		$router = $request->getRouter();
-		import('lib.pkp.classes.linkAction.request.AjaxModal');
 		return array_merge(
 			$this->getEnabled()?array(
 				new LinkAction(

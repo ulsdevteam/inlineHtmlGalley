@@ -9,20 +9,22 @@
  * @uses $keywords array List of keywords assigned to this article
  *
  *}
-{* Keywords *}
-{if !empty($keywords[$currentLocale])}
-    <div class="pkp_block block_inline_html_keywords">
-        <span class="title">
-            {translate key="article.subject"}
-        </span>
-        <div class="content">
-            <div class="keywords">
-                {foreach from=$keywords item=keyword}
-                    {foreach name=keywords from=$keyword item=keywordItem}
-                        {$keywordItem|escape}{if !$smarty.foreach.keywords.last}, {/if}
-                    {/foreach}
-                {/foreach}
-            </div>
-        </div>
-    </div>
+
+{if !empty($publication->getLocalizedData('keywords'))}
+	<div class="pkp_block block_inline_html_keywords">
+		<span class="title">
+			{translate key="article.subject"}
+		</span>
+		<div class="list-group-item keywords">
+			<strong>{capture assign=translatedKeywords}{translate key="article.subject"}{/capture}
+			{translate key="semicolon" label=$translatedKeywords}</strong>
+			<div class="">
+				<span class="value">
+					{foreach name="keywords" from=$publication->getLocalizedData('keywords') item="keyword"}
+						{$keyword|escape}{if !$smarty.foreach.keywords.last}{translate key="common.commaListSeparator"}{/if}
+					{/foreach}
+				</span>
+			</div>
+		</div>
+	</div>
 {/if}

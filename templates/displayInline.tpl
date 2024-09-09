@@ -40,9 +40,9 @@
 	</header>
 
 	<div class="article-main">
-		{if $article->getAuthors()}
+		{if $publication->getData('authors')}
 			<div class="authors">
-				{foreach from=$article->getAuthors() item=author}
+				{foreach from=$publication->getData('authors') item=author}
 					<div class="author">
 						<strong>{$author->getFullName()|escape}</strong>
 						{if $author->getLocalizedAffiliation()}

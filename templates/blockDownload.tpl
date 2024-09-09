@@ -7,14 +7,20 @@
  * Inline HTML Galley download block
  *
  *}
-<div class="pkp_block block_inline_html_download">
-	<h2 class="title">{translate key="article.nonpdf.title"}</h2>
-	<div class="content">
-		<span class="downloadLinkContainer">
-			<a class="obj_galley_link file" href="{url page="article" op="download" path=$submissionId|to_array:$galleyId}">
-				{translate key="common.download"}
-			</a>
-		</span>
-	</div>
-</div>
 
+<div class="pkp_block block_inline_html_download">
+	{if $primaryGalleys || $supplementaryGalleys}
+		<div class="download">
+			{if $primaryGalleys}
+				{foreach from=$primaryGalleys item=galley}
+					{include file="frontend/objects/galley_link.tpl" parent=$article purchaseFee=$currentJournal->getSetting('purchaseArticleFee') purchaseCurrency=$currentJournal->getSetting('currency')}
+				{/foreach}
+			{/if}
+			{if $supplementaryGalleys}
+				{foreach from=$supplementaryGalleys item=galley}
+					{include file="frontend/objects/galley_link.tpl" parent=$article isSupplementary="1"}
+				{/foreach}
+			{/if}
+		</div>
+	{/if}
+</div>
