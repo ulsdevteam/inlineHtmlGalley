@@ -20,55 +20,55 @@ use APP\template\TemplateManager;
 
 class InlineHtmlGalleySettingsForm extends Form {
 
-	/** @var $plugin InlineHtmlGalleyPlugin */
-	var $plugin;
+    /** @var $plugin InlineHtmlGalleyPlugin */
+    var $plugin;
 
-	/** @var $contextId int */
-	var $contextId;
+    /** @var $contextId int */
+    var $contextId;
 
-	/**
-	 * Constructor
-	 * @param $plugin InlineHtmlGalleyPlugin
-	 * @param $contextId int
-	 */
-	function __construct($plugin, $contextId) {
-		$this->plugin = $plugin;
-		$this->contextId = $contextId;
+    /**
+     * Constructor
+     * @param $plugin InlineHtmlGalleyPlugin
+     * @param $contextId int
+     */
+    function __construct($plugin, $contextId) {
+        $this->plugin = $plugin;
+        $this->contextId = $contextId;
 
-		parent::__construct(method_exists($plugin, 'getTemplateResource') ? $plugin->getTemplateResource('settingsForm.tpl') : $plugin->getTemplatePath() . 'settingsForm.tpl');
+        parent::__construct(method_exists($plugin, 'getTemplateResource') ? $plugin->getTemplateResource('settingsForm.tpl') : $plugin->getTemplatePath() . 'settingsForm.tpl');
 
-		$this->addCheck(new FormValidatorPost($this));
-		$this->addCheck(new FormValidatorCSRF($this));
-	}
+        $this->addCheck(new FormValidatorPost($this));
+        $this->addCheck(new FormValidatorCSRF($this));
+    }
 
-	/**
-	 * @copydoc Form::initData()
-	 */
-	function initData() {
-		$this->setData('xpath', $this->plugin->getSetting($this->contextId, 'xpath'));
-	}
+    /**
+     * @copydoc Form::initData()
+     */
+    function initData() {
+        $this->setData('xpath', $this->plugin->getSetting($this->contextId, 'xpath'));
+    }
 
-	/**
-	 * @copydoc Form::readInputData()
-	 */
-	function readInputData() {
-		$this->readUserVars(array('xpath'));
-	}
+    /**
+     * @copydoc Form::readInputData()
+     */
+    function readInputData() {
+        $this->readUserVars(array('xpath'));
+    }
 
-	/**
-	 * @copydoc Form::fetch()
-	 */
-	function fetch($request, $template = null, $display = false) {
-		$templateMgr = TemplateManager::getManager($request);
-		$templateMgr->assign('pluginName', $this->plugin->getName());
+    /**
+     * @copydoc Form::fetch()
+     */
+    function fetch($request, $template = null, $display = false) {
+        $templateMgr = TemplateManager::getManager($request);
+        $templateMgr->assign('pluginName', $this->plugin->getName());
 
-		return parent::fetch($request, $template, $display);
-	}
+        return parent::fetch($request, $template, $display);
+    }
 
-	/**
-	 * @copydoc Form::execute()
-	 */
-	function execute(...$functionArgs) {
-		$this->plugin->updateSetting($this->contextId, 'xpath', $this->getData('xpath'));
-	}
+    /**
+     * @copydoc Form::execute()
+     */
+    function execute(...$functionArgs) {
+        $this->plugin->updateSetting($this->contextId, 'xpath', $this->getData('xpath'));
+    }
 }
