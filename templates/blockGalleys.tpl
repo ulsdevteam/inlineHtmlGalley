@@ -1,10 +1,10 @@
-{* Article Galleys *}
+
 {if $primaryGalleys || $supplementaryGalleys}
     <div class="pkp_block block_galleys">
         <div class="title">
             <span>{translate key="common.download"}</span>
         </div>
-        <div class="content download">
+        <div class="download">
             {if $primaryGalleys}
                 {foreach from=$primaryGalleys item=galley}
                     {include file="frontend/objects/galley_link.tpl" parent=$article purchaseFee=$currentJournal->getSetting('purchaseArticleFee') purchaseCurrency=$currentJournal->getSetting('currency')}

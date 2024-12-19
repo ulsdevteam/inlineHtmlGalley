@@ -11,36 +11,37 @@
  *
  * @brief Class for Inline HTML Galley sidebar block plugin
  */
+namespace APP\plugins\generic\inlineHtmlGalley;
 
-import('plugins.generic.inlineHtmlGalley.InlineHtmlGalleyBlockPlugin');
+use APP\plugins\generic\inlineHtmlGalley\InlineHtmlGalleyBlockPlugin;
 
 abstract class InlineHtmlGalleySidebarBlockPlugin extends InlineHtmlGalleyBlockPlugin {
 
     abstract function blockName();
 
     /**
-	 * Get the display name of this plugin.
-	 * @return String
-	 */
-	function getDisplayName() {
-		return __('plugins.generic.inlineHtmlGalley.block.' . $this->blockName() . '.displayName');
+     * Get the display name of this plugin.
+     * @return String
+     */
+    function getDisplayName() {
+        return __('plugins.generic.inlineHtmlGalley.block.' . $this->blockName() . '.displayName');
+    }
+
+    /**
+     * Get a description of the plugin.
+     * @return String
+     */
+    function getDescription() {
+        return __('plugins.generic.inlineHtmlGalley.block.' . $this->blockName() . '.description');
 	}
 
-	/**
-	 * Get a description of the plugin.
-	 * @return String
-	 */
-	function getDescription() {
-		return __('plugins.generic.inlineHtmlGalley.block.' . $this->blockName() . '.description');
-	}
-
-	/**
-	 * Get the name of the block template file.
-	 * @return String
-	 */
-	function getBlockTemplateFilename() {
-		return 'block' . ucfirst($this->blockName()) . '.tpl';
-	}
+    /**
+     * Get the name of the block template file.
+     * @return String
+     */
+    function getBlockTemplateFilename() {
+        return 'block' . ucfirst($this->blockName()) . '.tpl';
+    }
 
 }
 
@@ -62,9 +63,9 @@ class InlineHtmlGalleyDoiSidebarBlockPlugin extends InlineHtmlGalleySidebarBlock
     }
 
     /**
-	 * @copydoc BlockPlugin::getContents()
-	 */
-	function getContents($templateMgr, $request = null) {
+     * @copydoc BlockPlugin::getContents()
+     */
+    function getContents($templateMgr, $request = null) {
         if ($templateMgr && $request) {
             $pubIdPlugins = $templateMgr->getTemplateVars('pubIdPlugins');
             if ($pubIdPlugins) {

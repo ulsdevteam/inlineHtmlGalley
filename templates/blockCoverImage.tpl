@@ -7,17 +7,26 @@
  * Inline HTML Galley Cover Image block
  *
  *}
-{* Article/Issue cover image *}
-{if $article->getLocalizedCoverImage() || $issue->getLocalizedCoverImage()}
-    <div class="pkp_block block_inline_html_cover_image">
-         <div class="article_cover_wrapper">
-            {if $article->getLocalizedCoverImage()}
-                <img class="img-fluid img-responsive" src="{$article->getLocalizedCoverImageUrl()|escape}"{if $article->getLocalizedCoverImageAltText()} alt="{$article->getLocalizedCoverImageAltText()|escape}"{/if}>
-            {else}
-                <a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
-                    <img class="img-fluid img-responsive" src="{$issue->getLocalizedCoverImageUrl()|escape}"{if $issue->getLocalizedCoverImageAltText()} alt="{$issue->getLocalizedCoverImageAltText()|escape}"{/if}>
-                </a>
-            {/if}
-        </div>
-    </div>
+
+{if $publication->getLocalizedData('coverImage') || ($issue && $issue->getLocalizedCoverImage())}
+	<div class="pkp_block block_inline_html_cover_image">
+		<div class="cover-image">
+			{if $publication->getLocalizedData('coverImage')}
+				{assign var="coverImage" value=$publication->getLocalizedData('coverImage')}
+				<img
+					class="img-responsive"
+					src="{$publication->getLocalizedCoverImageUrl($article->getData('contextId'))|escape}"
+					alt="{$coverImage.altText|escape|default:''}"
+				>
+			{else}
+				<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
+					<img
+						class="img-responsive"
+						src="{$issue->getLocalizedCoverImageUrl()|escape}"
+						alt="{$issue->getLocalizedCoverImageAltText()|escape|default:''}"
+					>
+				</a>
+			{/if}
+		</div>
+	</div>
 {/if}

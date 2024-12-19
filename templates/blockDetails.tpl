@@ -10,10 +10,9 @@
 {capture name='detailsBlockContent'}{call_hook name="Templates::Article::Details"}{/capture}
 {if $smarty.capture.detailsBlockContent ne ""}
 <div class="pkp_block block_inline_html_details">
-	<h2 class="title">{translate key="article.details"}</h2>
+	<span class="title">{translate key="article.details"}</span>
 	<div class="content">
 		{$smarty.capture.detailsBlockContent}
 	</div>
 </div>
 {/if}
-

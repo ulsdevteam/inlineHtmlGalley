@@ -11,8 +11,12 @@
  * 
  * @brief Form to provide settings for the InlineHtmlGalley plugin
  */
+namespace APP\plugins\generic\inlineHtmlGalley;
 
-import('lib.pkp.classes.form.Form');
+use PKP\form\Form;
+use PKP\form\validation\FormValidatorPost;
+use PKP\form\validation\FormValidatorCSRF;
+use APP\template\TemplateManager;
 
 class InlineHtmlGalleySettingsForm extends Form {
 
@@ -30,7 +34,7 @@ class InlineHtmlGalleySettingsForm extends Form {
     function __construct($plugin, $contextId) {
         $this->plugin = $plugin;
         $this->contextId = $contextId;
-        
+
         parent::__construct(method_exists($plugin, 'getTemplateResource') ? $plugin->getTemplateResource('settingsForm.tpl') : $plugin->getTemplatePath() . 'settingsForm.tpl');
 
         $this->addCheck(new FormValidatorPost($this));
@@ -54,17 +58,17 @@ class InlineHtmlGalleySettingsForm extends Form {
     /**
      * @copydoc Form::fetch()
      */
-    function fetch($request) {
+    function fetch($request, $template = null, $display = false) {
         $templateMgr = TemplateManager::getManager($request);
         $templateMgr->assign('pluginName', $this->plugin->getName());
 
-        return parent::fetch($request);
+        return parent::fetch($request, $template, $display);
     }
 
     /**
      * @copydoc Form::execute()
      */
-    function execute() {
+    function execute(...$functionArgs) {
         $this->plugin->updateSetting($this->contextId, 'xpath', $this->getData('xpath'));
     }
 }

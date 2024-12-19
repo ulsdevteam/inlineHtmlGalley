@@ -11,8 +11,11 @@
  *
  * @brief Class for Inline HTML Galley block plugin
  */
+namespace APP\plugins\generic\inlineHtmlGalley;
 
-import('lib.pkp.classes.plugins.BlockPlugin');
+use PKP\plugins\BlockPlugin;
+use PKP\config\Config;
+use PKP\plugins\PluginRegistry;
 
 class InlineHtmlGalleyBlockPlugin extends BlockPlugin {
 
