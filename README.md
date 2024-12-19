@@ -4,7 +4,7 @@ This plugin provides inline display of article galleys for PKP Open Journal Syst
 
 ## Requirements
 
-* OJS 3.x
+* OJS 3.4.x
   * The PKP plugin htmlArticleGalley (which ships by default with OJS)
 * [Bootstrap3 theme](https://github.com/NateWr/bootstrap3)
   * The plugin will function with other themes, but the structure of the blocks conforms to bootstrap3 expectations
@@ -40,6 +40,6 @@ The plugin provides article metadata as sidebar blocks, which may be enabled and
 
 ## Author / License
 
-Written by Clinton Graham and Chrysanthemum Lovelace for the [University of Pittsburgh](http://www.pitt.edu).  Copyright (c) University of Pittsburgh.
+Written by Clinton Graham and Chrysanthemum Lovelace and Tazio Polanco for the [University of Pittsburgh](http://www.pitt.edu).  Copyright (c) University of Pittsburgh.
 
 Released under a license of GPL v2 or later.
