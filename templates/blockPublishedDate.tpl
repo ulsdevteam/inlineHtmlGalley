@@ -17,7 +17,7 @@
 		</span>
 		<div class="list-group-item date-published">
 			{capture assign=translatedDatePublished}{translate key="submissions.published"}{/capture}
-			<strong>{translate key="semicolon" label=$translatedDatePublished}</strong>
+			<strong>{translate key="semicolon" label=$translatedDatePublished|cat:$dateFormatShort}</strong>
 			{$publication->getData('datePublished')|date_format:$dateFormatShort}
 		</div>
 		{* If this is an updated version *}
