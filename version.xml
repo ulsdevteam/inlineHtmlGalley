@@ -14,8 +14,8 @@
 <version>
 	<application>inlineHtmlGalley</application>
 	<type>plugins.generic</type>
-	<release>1.1.0.0</release>
-	<date>2021-08-02</date>
+	<release>1.2.0.0</release>
+	<date>2022-05-09</date>
 	<lazy-load>1</lazy-load>
 	<class>InlineHtmlGalleyPlugin</class>
 </version>

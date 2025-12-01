@@ -25,6 +25,8 @@
 	<message key="plugins.generic.inlineHtmlGalley.block.doi.description">This block provides a DOI link.</message>
 	<message key="plugins.generic.inlineHtmlGalley.block.coverImage.displayName">Inline HTML Galley Sidebar: Article/Issue Cover Image</message>
 	<message key="plugins.generic.inlineHtmlGalley.block.coverImage.description">This block shows the article/issue cover image.</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.details.displayName">Inline HTML Galley Sidebar: Article Details</message>
+	<message key="plugins.generic.inlineHtmlGalley.block.details.description">This block provides a location for content formerly shown in the Article Details section in non-inlineHtmlGalley sites.</message>
 	<message key="plugins.generic.inlineHtmlGalley.block.publishedDate.displayName">Inline HTML Galley Sidebar: Published Date</message>
 	<message key="plugins.generic.inlineHtmlGalley.block.publishedDate.description">This block shows the publishing date of the article.</message>
 	<message key="plugins.generic.inlineHtmlGalley.block.howToCite.displayName">Inline HTML Galley Sidebar: How To Cite</message>
