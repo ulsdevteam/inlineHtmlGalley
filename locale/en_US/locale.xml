@@ -14,7 +14,7 @@
 
 <locale name="en_US" full_name="U.S. English">
 	<message key="plugins.generic.inlineHtmlGalley.displayName">Inline HTML Galley for Bootstrap</message>
-	<message key="plugins.generic.inlineHtmlGalley.description">This plugin provides inline rendering support for HTML Galleys.</message>
+	<message key="plugins.generic.inlineHtmlGalley.description">This plugin provides inline rendering support for HTML Galleys. Requires bootstrap3 theme.</message>
 	<message key="plugins.generic.inlineHtmlGalley.block.download.displayName">HTML Galley Download Link</message>
 	<message key="plugins.generic.inlineHtmlGalley.block.download.description">This block provides a link to download the HTML Galley directly.</message>
 	<message key="plugins.generic.inlineHtmlGalley.block.keywords.displayName">Inline HTML Galley Sidebar: Keywords</message>

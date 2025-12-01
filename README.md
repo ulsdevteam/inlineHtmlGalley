@@ -7,8 +7,7 @@ This plugin provides inline display of article galleys for PKP Open Journal Syst
 * OJS 3.x
   * The PKP plugin htmlArticleGalley (which ships by default with OJS)
 * [Bootstrap3 theme](https://github.com/NateWr/bootstrap3)
-  * The plugin may function with other themes, but the structure of the blocks conforms to bootstrap3 expectations
-  * The plugin breaks the Default theme
+  * The plugin only works with the boostrap3 theme.
 * PHP modules
   * [libxml](https://www.php.net/manual/en/book.libxml.php)
   * [dom](https://www.php.net/manual/en/book.dom.php)
@@ -32,6 +31,8 @@ php lib/pkp/tools/installPluginVersion.php plugins/generic/inlineHtmlGalley/vers
 ## Configuration
 
 Login as a Journal Manger and navigate to the Journal for which you wish to use inline display of HTML Galleys.  Enable the plugin via Login -> Settings -> Website -> Plugins -> Inline HTML Galley -> Enable.
+
+Enable the Bootstrap 3 Base Theme Plugin then select it for use in Settings->Website->Theme. The plugin does not work with other themes. 
 
 Once enabled, the default view of an HTML Galley will extract the HTML `body` from the Galley and will place it inline in the Galley view.  You will need to replicate any CSS or Javascript directives used in the `head` of the Galley in your website configuration.  (Hint: see the Custom Headers plugin.)
 
