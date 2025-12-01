@@ -66,5 +66,6 @@ class InlineHtmlGalleySettingsForm extends Form {
      */
     function execute(...$functionArgs) {
         $this->plugin->updateSetting($this->contextId, 'xpath', $this->getData('xpath'));
+        return parent::execute(...$functionArgs);
     }
 }

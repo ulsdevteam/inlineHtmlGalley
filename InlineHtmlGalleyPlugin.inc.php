@@ -93,7 +93,7 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 				$activeTheme = $site->getData('themePluginPath');
 			}
 			if ($activeTheme === 'bootstrap3') {
-                            HookRegistry::register('TemplateResource::getFilename', array($this, '_overridePluginTemplates'), HOOK_SEQUENCE_CORE);
+				HookRegistry::register('TemplateResource::getFilename', array($this, '_overridePluginTemplates'), HOOK_SEQUENCE_CORE);
 			}		
 		}
 
