@@ -83,7 +83,18 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 				$this->getPluginPath()
 			);
 			HookRegistry::register('ArticleHandler::view', array($this, 'articleViewCallback'), HOOK_SEQUENCE_LATE);
-			HookRegistry::register('TemplateResource::getFilename', array($this, '_overridePluginTemplates'), HOOK_SEQUENCE_CORE);
+			//check if bootstrap3 is the active theme
+			$request = Application::get()->getRequest();
+			$context = $request->getContext();
+			if ($context instanceof Context) {
+				$activeTheme = $context->getData('themePluginPath');
+			} else {
+				$site = $request->getSite();
+				$activeTheme = $site->getData('themePluginPath');
+			}
+			if ($activeTheme === 'bootstrap3') {
+				HookRegistry::register('TemplateResource::getFilename', array($this, '_overridePluginTemplates'), HOOK_SEQUENCE_CORE);
+			}		
 		}
 
 		return true;
@@ -153,7 +164,8 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 			}
 			$errorsEnabled = libxml_use_internal_errors();
 			libxml_use_internal_errors(true);
-			$dom = DOMDocument::loadHTML($html);
+			$dom = new DOMDocument();
+			$dom->loadHTML($html);
 			$xpath = $this->getSetting($contextId, 'xpath');
 			if (empty($xpath)) {
 				$tags = $dom->getElementsByTagName('body');
@@ -161,7 +173,7 @@ class InlineHtmlGalleyPlugin extends HtmlArticleGalleyPlugin {
 					foreach ($body->childNodes as $child) {
 						$bodyContent .= $dom->saveHTML($child);
 					}
-					last;
+					break;
 				}
 			} else {
 				$domXpath = new DOMXPath($dom);

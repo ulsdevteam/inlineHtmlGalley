@@ -15,7 +15,7 @@ msgid "plugins.generic.inlineHtmlGalley.displayName"
 msgstr "Inline HTML Galley for Bootstrap"
 
 msgid "plugins.generic.inlineHtmlGalley.description"
-msgstr "This plugin provides inline rendering support for HTML Galleys."
+msgstr "This plugin provides inline rendering support for HTML Galleys. Requires bootstrap3 theme."
 
 msgid "plugins.generic.inlineHtmlGalley.block.download.displayName"
 msgstr "HTML Galley Download Link"
