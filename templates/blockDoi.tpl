@@ -14,12 +14,13 @@
 		{* DOI *}
 		{assign var=doiObject value=$article->getCurrentPublication()->getData('doiObject')}
 		{if $doiObject}
+			{assign var="doi" value=$doiObject->getData('doi')}
 			{assign var="doiUrl" value=$doiObject->getData('resolvingUrl')|escape}
 			<div class="list-group-item doi">
 				{capture assign=translatedDoi}{translate key="doi.readerDisplayName"}{/capture}
 				<strong>{translate key="semicolon" label=$translatedDoi}</strong>
 				<a href="{$doiUrl}">
-					{$doiUrl}
+					{$doi}
 				</a>
 			</div>
 		{/if}	
