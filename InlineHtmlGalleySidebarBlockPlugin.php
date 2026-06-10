@@ -39,7 +39,7 @@ abstract class InlineHtmlGalleySidebarBlockPlugin extends InlineHtmlGalleyBlockP
      * Get the name of the block template file.
      * @return String
      */
-    function getBlockTemplateFilename() {
+    public function getBlockTemplateFilename(): string {
         return 'block' . ucfirst($this->blockName()) . '.tpl';
     }
 

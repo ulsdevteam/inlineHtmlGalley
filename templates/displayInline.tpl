@@ -16,7 +16,7 @@
  * @uses $supplementaryGalleys array List of article galleys that are supplementary
  * @uses $inlineHtmlGalley string The HTML content of the Article Galley
  *}
-{include file="frontend/components/header.tpl" pageTitleTranslated=$article->getLocalizedTitle()|escape}
+{include file="frontend/components/header.tpl" pageTitleTranslated=$publication->getLocalizedFullTitle(null, 'html')|strip_unsafe_html|escape}
 
 <div class="page page_article">
 	{if $section}
@@ -30,10 +30,10 @@
 
 	<header>
 		<h1 class="page-header">
-			{$article->getLocalizedTitle()|escape}
-			{if $article->getLocalizedSubtitle()}
+			{$publication->getLocalizedTitle(null, 'html')|strip_unsafe_html|escape}
+			{if $publication->getLocalizedData('subtitle')}
 				<small>
-					{$article->getLocalizedSubtitle()|escape}
+					{$publication->getLocalizedSubTitle(null, 'html')|strip_unsafe_html|escape}
 				</small>
 			{/if}
 		</h1>
@@ -45,9 +45,12 @@
 				{foreach from=$publication->getData('authors') item=author}
 					<div class="author">
 						<strong>{$author->getFullName()|escape}</strong>
-						{if $author->getLocalizedAffiliation()}
+						{if count($author->getAffiliations()) > 0}
 							<div class="article-author-affilitation">
-								{$author->getLocalizedAffiliation()|escape}
+								{foreach name="affiliations" from=$author->getAffiliations() item="affiliation"}
+									<span>{$affiliation->getLocalizedName()|escape}</span>
+									{if !$smarty.foreach.affiliations.last}{translate key="common.commaListSeparator"}{/if}
+								{/foreach}
 							</div>
 						{/if}
 						{if $author->getOrcid()}
@@ -64,10 +67,10 @@
 		{/if}
 
 		{* Article abstract *}
-		{if $article->getLocalizedAbstract()}
+		{if $publication->getLocalizedData('abstract')}
 			<div class="article-summary" id="summary">
 				<div class="article-abstract">
-					{$article->getLocalizedAbstract()|strip_unsafe_html|nl2br}
+					{$publication->getLocalizedData('abstract')|strip_unsafe_html|nl2br}
 				</div>
 			</div>
 			{call_hook name="Templates::Article::Main"}
@@ -76,7 +79,7 @@
 
 	{* Provide download link *}
 	<div class="inline_html_galley_download">
-		<a class="obj_galley_link file" href="{url page="article" op="download" path=$article->getBestArticleId()|to_array:$galley->getBestGalleyId()}">
+		<a class="obj_galley_link file" href="{url page="article" op="download" path=$article->getBestId()|to_array:$galley->getBestGalleyId()}">
 			{translate key="common.download"}
 		</a>
 	</div>
