@@ -119,7 +119,8 @@ class InlineHtmlGalleyBlockPlugin extends BlockPlugin {
 				$submission = $templateMgr->getTemplateVars('article');
 				$galley = $templateMgr->getTemplateVars('galley');
 				if ($submission && $galley && $galley->getFileType() == 'text/html') {
-					$templateMgr->assign('submissionId', $submission->getBestId());					$templateMgr->assign('galleyId', $galley->getBestGalleyId());
+					$templateMgr->assign('submissionId', $submission->getBestId());
+					$templateMgr->assign('galleyId', $galley->getBestGalleyId());
 					return parent::getContents($templateMgr);
 				}
 			}
