@@ -39,7 +39,7 @@ abstract class InlineHtmlGalleySidebarBlockPlugin extends InlineHtmlGalleyBlockP
      * Get the name of the block template file.
      * @return String
      */
-    function getBlockTemplateFilename() {
+    public function getBlockTemplateFilename(): string {
         return 'block' . ucfirst($this->blockName()) . '.tpl';
     }
 
@@ -60,24 +60,6 @@ class InlineHtmlGalleyKeywordsSidebarBlockPlugin extends InlineHtmlGalleySidebar
 class InlineHtmlGalleyDoiSidebarBlockPlugin extends InlineHtmlGalleySidebarBlockPlugin {
     function blockName() {
         return "doi";
-    }
-
-    /**
-     * @copydoc BlockPlugin::getContents()
-     */
-    function getContents($templateMgr, $request = null) {
-        if ($templateMgr && $request) {
-            $pubIdPlugins = $templateMgr->getTemplateVars('pubIdPlugins');
-            if ($pubIdPlugins) {
-                foreach ($pubIdPlugins as $pubIdPlugin) {
-                    if ($pubIdPlugin->getPubIdType() == 'doi') {
-                        return parent::getContents($templateMgr, $request);
-                    }
-                }
-            }
-        }
-
-        return false;
     }
 }
 
