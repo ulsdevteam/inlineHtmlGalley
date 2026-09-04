@@ -16,7 +16,7 @@
  * @uses $supplementaryGalleys array List of article galleys that are supplementary
  * @uses $inlineHtmlGalley string The HTML content of the Article Galley
  *}
-{include file="frontend/components/header.tpl" pageTitleTranslated=$publication->getLocalizedFullTitle(null, 'html')|strip_unsafe_html|escape}
+{include file="frontend/components/header.tpl" pageTitleTranslated=$publication->getLocalizedFullTitle(null, 'html')|strip_unsafe_html}
 
 <div class="page page_article">
 	{if $section}
@@ -30,10 +30,10 @@
 
 	<header>
 		<h1 class="page-header">
-			{$publication->getLocalizedTitle(null, 'html')|strip_unsafe_html|escape}
+			{$publication->getLocalizedTitle(null, 'html')|strip_unsafe_html}
 			{if $publication->getLocalizedData('subtitle')}
 				<small>
-					{$publication->getLocalizedSubTitle(null, 'html')|strip_unsafe_html|escape}
+					{$publication->getLocalizedSubTitle(null, 'html')|strip_unsafe_html}
 				</small>
 			{/if}
 		</h1>
