@@ -20,7 +20,7 @@
 				{capture assign=translatedDoi}{translate key="doi.readerDisplayName"}{/capture}
 				<strong>{translate key="semicolon" label=$translatedDoi}</strong>
 				<a href="{$doiUrl}">
-					{$doi}
+					{$doi|escape}
 				</a>
 			</div>
 		{/if}	
