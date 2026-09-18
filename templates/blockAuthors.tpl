@@ -18,12 +18,15 @@
 			{foreach from=$publication->getData('authors') item=author}
 				<div class="author">
 					<strong>{$author->getFullName()|escape}</strong>
-					{if $author->getLocalizedAffiliation()}
-						<div class="article-author-affilitation">
-							{$author->getLocalizedAffiliation()|escape}
-						</div>
-					{/if}
-					{if $author->getOrcid()}
+						{if count($author->getAffiliations()) > 0}
+							<div class="article-author-affilitation">
+								{foreach name="affiliations" from=$author->getAffiliations() item="affiliation"}
+									<span>{$affiliation->getLocalizedName()|escape}</span>
+									{if !$smarty.foreach.affiliations.last}{translate key="common.commaListSeparator"}{/if}
+								{/foreach}
+							</div>
+						{/if}
+						{if $author->getOrcid()}
 						<div class="orcid">
 							{$orcidIcon}
 							<a href="{$author->getOrcid()|escape}" target="_blank">

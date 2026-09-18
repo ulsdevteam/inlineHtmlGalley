@@ -77,14 +77,6 @@ class InlineHtmlGalleyBlockPlugin extends BlockPlugin {
 	}
 
 	/**
-	 * Get the supported contexts (e.g. BLOCK_CONTEXT_...) for this block.
-	 * @return array
-	 */
-	function getSupportedContexts() {
-		return array(BLOCK_CONTEXT_SIDEBAR);
-	}
-
-	/**
 	 * Get the parent plugin
 	 * @return object
 	 */
